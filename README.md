@@ -18,8 +18,7 @@ Run:
 gpg --version
 ```
 
-If the system cannot find the program, add it to path.
-On Windows it's usually installed in *C:\Program Files (x86)\GnuPG\bin*.
+If the system cannot find the program, add it to path. On Windows it's usually installed in *C:\Program Files (x86)\GnuPG\bin*.
 
 ## Create your key
 
@@ -37,9 +36,9 @@ gpg --full-gen-key
 - Enter your GitHub no-reply email.
 - You can skip the Comment entry by pressing Enter.
 - Okay.
-- Think of a passphrase and enter it.
-The passphrase must consist of at least 8 characters,
-one of which must be a number or special character.
+- Think of a passphrase, remember it and enter it.
+
+The passphrase must consist of at least 8 characters, one of which must be a number or special character.
 
 ## Get your signing key
 
@@ -49,8 +48,7 @@ Run:
 gpg --list-keys --keyid-format long
 ```
 
-Find your name in the output table and
-copy the 16-digit number right after `rsa4096/`.
+Find your name in the output table and copy the 16-digit number right after `rsa4096/`.
 
 ## Attach the key to git
 
@@ -88,13 +86,11 @@ Copy it to clipboard.
 
 ## Add the key to GitHub
 
-Open [Add new GPG key](https://github.com/settings/gpg/new) in the browser.
-Paste your key in the text area and click on *Add GPG key*.
+Open [Add new GPG key](https://github.com/settings/gpg/new) in the browser. Paste your key in the text area and click on *Add GPG key*.
 
 ## Always require signature
 
-If you plan to sign all your future commits, require every commit to be signed.
-Run:
+If you plan to sign all your future commits, require every commit to be signed. Run:
 
 ```bash
 git config --global commit.gpgsign true
@@ -104,16 +100,19 @@ This is especially useful when using IDEs that don't have their own option for s
 
 ## VS Code
 
-If you use VS Code as your editor,
-go to settings and enable option *Git: Enable commit signing*.
+If you use VS Code as your editor, go to settings and enable option *Git: Enable commit signing* or write
+
+```json
+"git.enableCommitSigning": true
+```
+
+directly to [settings.json](https://code.visualstudio.com/docs/getstarted/settings#_settings-file-locations).
 
 ## Push a commit
 
-After attempting to push a commit to any repository,
-git should ask you for your passphrase with which you created the key.
+After attempting to push a commit to any repository, git should ask you for your passphrase with which you created the key.
 
-After successully pushing a commit,
-you should see a verified badge on the *Commits* page of the repository you pushed to.
+After successully pushing a commit, you should see a verified badge on the *Commits* page of the repository you pushed to.
 
 ![Verified commit badge](verified.png)
 
